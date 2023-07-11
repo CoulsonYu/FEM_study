@@ -1,0 +1,10 @@
+clc;
+clear all;
+poi_ndof = 4;
+A = importdata('poisson_mat.txt');
+B = reshape(A,poi_ndof,poi_ndof);
+[eigenvector_column,eigenvalue_diagonal] = eig(B);
+eigenvalue_vec = diag(eigenvalue_diagonal);
+eig_min = min(eigenvalue_vec);
+eig_max = max(eigenvalue_vec);
+condition_number = cond(B);
